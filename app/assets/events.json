@@ -5,7 +5,7 @@
                 "date": "2016.01.01",
                 "time": "1:00 PM",
                 "duration": "1 Hour",
-				"fee": 1,
+				"fee": 100.00,
 				"rating": 1,
 				"imageUrl" : "https://openclipart.org/image/300px/svg_to_png/193230/Tux-at-the-Beach-by-Merlin2525.png",
                 "location": {

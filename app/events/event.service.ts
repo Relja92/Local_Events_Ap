@@ -5,19 +5,20 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EventService {
-    private _eventUrl = '../app/assets/events.json'
-
-    constructor(private _http: Http){}
-
-	getEvents(): Observable<IEvents[]>{
-		return this._http.get(this._eventUrl)
-        .map((response:Response) => IEvent[]>response.json())
-        .do(data => console.log('All: ' + JSON.stringify(data)))
-        .catch(this.handleError);
-	}
-
-    private handleError(error:Response) {
-        console.log(error);
-        return Observable.throw(error.json().error || 'Server Error');
+    
+    private _eventUrl = '../assets/events.json';
+    
+    constructor(private _http: Http) { }
+    
+    getEvents(): Observable<IEvent[]> {
+        return this._http.get(this._eventUrl)
+            .map((response: Response) => <IEvent[]>response.json())
+            .do(data => console.log("All: " + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+    
+    private handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
     }
 }

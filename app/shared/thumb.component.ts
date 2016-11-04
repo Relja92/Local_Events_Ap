@@ -7,18 +7,16 @@ import { Component, OnChanges, Input,
     styleUrls: ['app/shared/thumb.component.css']
 })
 export class ThumbComponent {
-    thumbsWidth: number;
     @Input() rating: number;
-    ratingClicked: EventEmitter<string>;
-
+    thumbWidth: number;
+    @Output() ratingClicked: EventEmitter<string> =
+        new EventEmitter<string>();
+    
     ngOnChanges(): void {
-		this.thumbsWidth = this.rating * 86 / 5;
-	}
-	@Output() ratingClicked:
-	EventEmitter<string> = new EventEmitter<string>
-
-	onClick() {
-		this.ratingClicked.emit(`The rating ${this.rating} was clicked`);
+		this.thumbWidth = this.rating * 86 / 5;
 	}
 	
+	onClick() {
+	    this.ratingClicked.emit(`The rating ${this.rating} was clicked.`);
+    }
 }

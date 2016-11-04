@@ -27,17 +27,17 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Observable'], function(
             EventService = (function () {
                 function EventService(_http) {
                     this._http = _http;
-                    this._eventUrl = '../app/assets/events.json';
+                    this._eventUrl = '../assets/events.json';
                 }
                 EventService.prototype.getEvents = function () {
                     return this._http.get(this._eventUrl)
-                        .map(function (response) { return IEvent[] > response.json(); })
-                        .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+                        .map(function (response) { return response.json(); })
+                        .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
                         .catch(this.handleError);
                 };
                 EventService.prototype.handleError = function (error) {
-                    console.log(error);
-                    return Observable_1.Observable.throw(error.json().error || 'Server Error');
+                    console.error(error);
+                    return Observable_1.Observable.throw(error.json().error || 'Server error');
                 };
                 EventService = __decorate([
                     core_1.Injectable(), 
